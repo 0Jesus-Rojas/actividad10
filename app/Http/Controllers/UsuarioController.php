@@ -13,6 +13,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
+
         $usuarios = usuario::all();
 
         return response()->json($usuarios);
@@ -88,7 +89,7 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
         $usuario=usuario::find($id);
-        /* $request->validate([
+        $request->validate([
             'nombres'=> 'required',
             'apellidos'=> 'required',
             'TipoIdentificacion'=> 'required',
@@ -98,7 +99,7 @@ class UsuarioController extends Controller
             'profesion'=> 'required',
             'rol'=> 'required',
             
-        ]); */
+        ]); 
         $usuario =usuario::find($id);
         $usuario->nombres = $request->nombres;
         $usuario->apellidos = $request->apellidos;
@@ -126,12 +127,12 @@ class UsuarioController extends Controller
     {
         $usuario=usuario::find($id);
         $usuario->delete();
-        $data=[
+        /* $data=[
             'message' => 'usuario eliminado',
             'usuario' => $usuario
-        ];
-        return response()-> json($data);
+        ]; */
+        //return response()-> json($data);
 
-        //return redirect("usuarios");
+        return redirect("usuarios");
     }
 }
